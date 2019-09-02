@@ -104,6 +104,14 @@ class Controllers {
       res.status(500).json(e)
     }
   }
+
+  static async login(req, res) {
+    try {
+      
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  }
 }
 
 
