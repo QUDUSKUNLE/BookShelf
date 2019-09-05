@@ -2,11 +2,10 @@ const chai = require('chai');
 const assert = require('assert');
 const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const app = require('../../index.js');
 const mock = require('../__mockData__');
 
-dotenv.config();
+
 chai.should();
 const { expect } = chai;
 chai.use(chaiHttp);
@@ -14,7 +13,7 @@ chai.use(chaiHttp);
 
 // Test for appController
 describe('Assessment Test', () => {
-  // Test sign up route
+  // Connect to db
   describe('Connect to db', () => {
     before((done) => {
       mongoose.createConnection(
