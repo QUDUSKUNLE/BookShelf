@@ -28,7 +28,7 @@ class Controllers {
   static async allUsers(req, res) {
     let users;
     try {
-      if (req.query) {
+      if (req.query.email) {
         const queryUser = await Users.findOne({ email: req.query.email});
         users = {
           id: queryUser._id,

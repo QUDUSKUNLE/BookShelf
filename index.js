@@ -26,3 +26,5 @@ require('./src/routes')(app, passport);
 require('./src/middlewares')(passport);
 
 app.listen(port, () => console.log(`App running on PORT ${port}`));
+
+module.exports = app;

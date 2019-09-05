@@ -4,16 +4,27 @@
     "description": "a simple bookshelf",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node .",
-        "dev": "nodemon -r ./env.js ."
+        "dev": "nodemon -r ./env.js .",
+        "test": "nyc --reporter=text --reporter=html --reporter=lcov mocha -r ./env.js src/tests --timeout 40000 --exit && npm run coverage-report",
+        "coverage-report": "cat ./coverage/lcov.info | coveralls"
     },
     "author": "Qudus Yekeen",
     "license": "MIT",
     "devDependencies": {
+        "assert": "^2.0.0",
+        "asset": "^0.4.13",
+        "cat": "^0.2.0",
+        "chai": "^4.2.0",
+        "chai-http": "^4.3.0",
+        "coveralls": "^3.0.6",
         "eslint": "^6.3.0",
         "eslint-config-airbnb-base": "^14.0.0",
-        "eslint-plugin-import": "^2.18.2"
+        "eslint-plugin-import": "^2.18.2",
+        "istanbul": "^0.4.5",
+        "mocha": "^6.2.0",
+        "mocha-lcov-reporter": "^1.3.0",
+        "nyc": "^14.1.1"
     },
     "dependencies": {
         "async-redis": "^1.1.7",
@@ -23,9 +34,11 @@
         "dotenv": "^8.1.0",
         "express": "^4.17.1",
         "express-session": "^1.16.2",
+        "faker": "^4.1.0",
         "mongoose": "^5.6.11",
         "nodemon": "^1.19.1",
         "passport": "^0.4.0",
-        "passport-local": "^1.0.0"
+        "passport-local": "^1.0.0",
+        "unique-string": "^2.0.0"
     }
 }
