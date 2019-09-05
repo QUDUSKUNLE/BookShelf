@@ -8,6 +8,14 @@ module.exports =  {
     email: faker.internet.email(),
     password: '123456789'
   },
+  signIn: {
+    email: 'bola@gmail.com',
+    password: '123456789'
+  },
+  wrongCredentials: {
+    email: 'koa@gmail.com',
+    password: '12345678900'
+  },
   book: {
     title: faker.name.findName(),
     description: 'The Big bang theory',

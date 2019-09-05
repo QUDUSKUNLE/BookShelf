@@ -57,6 +57,18 @@ describe('Assessment Test', () => {
         });
     });
 
+    it('should be able to query a user', (done) => {
+      chai.request(app)
+        .get(`/api/users?email=${mock.signIn.email}`)
+        .set('Content-Type', 'application/json')
+        .end((err, res) => {
+          res.should.have.status(200);
+          assert.equal(true, res.body.success);
+          assert.equal(mock.signIn.email, res.body.users.email)
+          done();
+        });
+    });
+
     it('should be able to add a new book', (done) => {
       chai.request(app)
         .post('/api/books')
@@ -85,6 +97,30 @@ describe('Assessment Test', () => {
       chai.request(app)
         .get('/api/books')
         .set('Content-Type', 'application/json')
+        .end((err, res) => {
+          res.should.have.status(200);
+          assert.equal(true, res.body.success);
+          done();
+        });
+    });
+
+    it('should be able to log in a registered user', (done) => {
+      chai.request(app)
+        .post('/api/login')
+        .set('Content-Type', 'application/json')
+        .send(mock.signIn)
+        .end((err, res) => {
+          res.should.have.status(200);
+          assert.equal(true, res.body.success);
+          done();
+        });
+    });
+
+    it('should be able to log in a registered user', (done) => {
+      chai.request(app)
+        .post('/api/login')
+        .set('Content-Type', 'application/json')
+        .send(mock.signIn)
         .end((err, res) => {
           res.should.have.status(200);
           assert.equal(true, res.body.success);
